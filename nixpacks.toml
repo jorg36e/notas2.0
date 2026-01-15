@@ -1,11 +1,8 @@
 [phases.setup]
 nixPkgs = ['php82', 'php82Packages.composer', 'nodejs_20']
 
-[phases.install]
-cmds = ['composer install --optimize-autoloader --no-dev --no-scripts']
-
 [phases.build]
-cmds = ['cp .env.railway .env', 'npm install', 'npm run build']
+cmds = ['cp .env.railway .env', 'composer install --optimize-autoloader --no-dev --no-scripts', 'npm install', 'npm run build']
 
 [start]
 cmd = 'php artisan package:discover --ansi && php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=$PORT'
