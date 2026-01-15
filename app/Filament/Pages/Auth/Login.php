@@ -8,7 +8,6 @@ use Filament\Forms\Components\TextInput;
 
 class Login extends BaseLogin
 {
-    protected static string $view = 'filament.pages.auth.admin-login';
 
     public function form(Form $form): Form
     {

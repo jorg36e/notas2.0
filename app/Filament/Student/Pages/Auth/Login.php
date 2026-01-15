@@ -12,8 +12,6 @@ use Illuminate\Validation\ValidationException;
 
 class Login extends BaseLogin
 {
-    protected static string $view = 'filament.student.pages.auth.login';
-
     public function form(Form $form): Form
     {
         return $form
