@@ -8,4 +8,4 @@ cmds = ['composer install --optimize-autoloader --no-dev --no-scripts']
 cmds = ['npm install', 'npm run build']
 
 [start]
-cmd = 'php artisan package:discover --ansi && php artisan migrate --force && php artisan db:seed --class=AdminUserSeeder --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=$PORT'
+cmd = 'php artisan package:discover --ansi && php artisan migrate --force && php artisan db:seed --class=SchoolSettingsSeeder --force && php artisan db:seed --class=AdminUserSeeder --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=$PORT'
