@@ -1,0 +1,284 @@
+/* ============================================
+   CUSTOM STYLES PARA NOTAS 2.0
+   ============================================ */
+
+/* Animaciones personalizadas */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Variables CSS */
+:root {
+    /* Colores */
+    --color-blue-600: #2563eb;
+    --color-blue-700: #1d4ed8;
+    --color-purple-600: #9333ea;
+    --color-indigo-600: #4f46e5;
+    --color-green-600: #16a34a;
+    --color-red-600: #dc2626;
+    
+    /* Transiciones */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-base: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+    
+    /* Sombras */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Utilidades de animación */
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in-down {
+    animation: slideInDown 0.6s ease-out;
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Mejoras en botones */
+.btn {
+    position: relative;
+    overflow: hidden;
+    font-family: inherit;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+/* Mejoras en tarjetas */
+.card, .feature-card, .stat-box {
+    position: relative;
+}
+
+.card::before,
+.feature-card::before,
+.stat-box::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+/* Headers mejorados */
+header {
+    animation: slideInDown 0.6s ease-out;
+}
+
+header a.logo {
+    position: relative;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+header a.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-blue-600), var(--color-purple-600));
+    transition: width 0.3s ease;
+}
+
+header a.logo:hover::after {
+    width: 100%;
+}
+
+/* Mejoras en textos */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    letter-spacing: -0.015em;
+}
+
+/* Links mejorados */
+a {
+    position: relative;
+    text-decoration: none;
+}
+
+nav a:not(.btn)::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width 0.3s ease;
+}
+
+nav a:not(.btn):hover::after {
+    width: 100%;
+}
+
+/* Secciones con estilos mejorados */
+.hero {
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.features {
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.stats {
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+    .hero {
+        padding: 3rem 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .feature-card {
+        padding: 1.5rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Tema oscuro mejorado */
+@media (prefers-color-scheme: dark) {
+    .feature-card,
+    .stat-box {
+        background: linear-gradient(
+            135deg,
+            rgba(31, 41, 55, 0.8) 0%,
+            rgba(17, 24, 39, 0.8) 100%
+        );
+        backdrop-filter: blur(10px);
+    }
+    
+    .feature-card:hover {
+        background: linear-gradient(
+            135deg,
+            rgba(59, 130, 246, 0.1) 0%,
+            rgba(139, 92, 246, 0.1) 100%
+        );
+    }
+}
+
+/* Scroll suave */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mejoras de accesibilidad */
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--color-blue-600);
+    outline-offset: 2px;
+}
+
+/* Efecto glass-morphism */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+    .glass {
+        background: rgba(15, 23, 42, 0.7);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Gradientes personalizados */
+.gradient-blue-purple {
+    background: linear-gradient(135deg, var(--color-blue-600) 0%, var(--color-purple-600) 100%);
+}
+
+.gradient-indigo-purple {
+    background: linear-gradient(135deg, var(--color-indigo-600) 0%, var(--color-purple-600) 100%);
+}
+
+/* Estados de carga */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-left: 0.5em;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
