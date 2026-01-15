@@ -2,10 +2,10 @@
 nixPkgs = ['php82', 'php82Packages.composer']
 
 [phases.install]
-cmds = ['composer install --optimize-autoloader --no-dev']
+cmds = ['composer install --optimize-autoloader --no-dev --no-scripts']
 
 [phases.build]
 cmds = ['npm install', 'npm run build']
 
 [start]
-cmd = 'php artisan serve --host=0.0.0.0 --port=$PORT'
+cmd = 'php artisan package:discover --ansi && php artisan migrate --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=$PORT'
