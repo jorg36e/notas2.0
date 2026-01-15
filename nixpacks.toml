@@ -2,7 +2,7 @@
 nixPkgs = ['php82', 'php82Packages.composer', 'nodejs_20']
 
 [phases.install]
-cmds = ['cp .env.railway .env || true', 'composer install --optimize-autoloader --no-dev --no-scripts']
+cmds = ['composer install --optimize-autoloader --no-dev --no-scripts']
 
 [phases.build]
 cmds = ['npm install', 'npm run build']
